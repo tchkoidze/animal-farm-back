@@ -7,16 +7,25 @@ async function main() {
   await prisma.$executeRawUnsafe(
     `TRUNCATE TABLE "Animal" RESTART IDENTITY CASCADE;`,
   );
+  await prisma.$executeRawUnsafe(
+    `TRUNCATE TABLE "PigStatus" RESTART IDENTITY CASCADE;`,
+  );
 
   await prisma.animal.createMany({
     data: [
-      { name: 'Boxer', type: 'Horse', url: 'horse.jpg' },
-      { name: 'Clover', type: 'Cock', url: 'cock.jpg' },
-      { name: 'Donald', type: 'Duck', url: 'duck.jpg' },
-      { name: 'Benjamin', type: 'Donkey', url: 'donkey.jpg' },
-      { name: 'Muriel', type: 'Goat', url: 'goat.jpg' },
-      { name: 'Pagy', type: 'Goose', url: 'goose.jpg' },
+      { name: 'Boxer', type: 'Mammal', url: 'horse.jpg' },
+      { name: 'Clover', type: 'Bird', url: 'cock.jpg' },
+      { name: 'Donald', type: 'Bird', url: 'duck.jpg' },
+      { name: 'Benjamin', type: 'Mammal', url: 'donkey.jpg' },
+      { name: 'Muriel', type: 'Mammal', url: 'goat.jpg' },
+      { name: 'Pagy', type: 'Bird', url: 'goose.jpg' },
     ],
+  });
+
+  await prisma.pigStatus.create({
+    data: {
+      status: 'default',
+    },
   });
 }
 

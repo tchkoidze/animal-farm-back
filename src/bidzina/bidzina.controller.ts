@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { BidzinaService } from './bidzina.service';
 
 @Controller('api/bidzina')
@@ -9,5 +9,11 @@ export class BidzinaController {
   @Get('status')
   async getStatus() {
     return await this.bidzinaService.getStatus();
+  }
+
+  @Post('status/toggle')
+  async updateStatus() {
+    //async updateStatus(@Body('status') newStatus: string) {
+    return this.bidzinaService.updateStatus();
   }
 }
