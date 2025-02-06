@@ -32,6 +32,28 @@
 $ npm install
 ```
 
+```database
+# neon
+- create your account at https://neon.tech/
+- chose Prisma as connection method and
+- copy and paste code snipets at schema.prisma and .env as
+  shown
+
+# seed
+- seed.ts provides databas with default data:
+  status and animal tables
+
+# deploy prisma
+- npx prisma migrate deploy
+- optional:
+  npx prisma migrate reset (resets the database by dropping all tables and applying migrations from scratch)
+
+
+# run seed
+- npx prisma db seed
+
+```
+
 ## Compile and run the project
 
 ```bash
